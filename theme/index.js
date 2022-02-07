@@ -11,33 +11,33 @@ import { colors } from "./styles";
 
 const customTheme = {
   styles,
-  breakpoints: createBreakpoints(breakpoints),
+  // breakpoints: createBreakpoints(breakpoints),
   colors,
   components: {
     Heading: {
       baseStyle: {
-        fontFamily: "inherit",
-        fontWeight: "normal",
-        color: "inherit",
+        // fontFamily: "inherit",
+        // fontWeight: "normal",
+        // color: "inherit",
       },
     },
     Text: {
       baseStyle: {
-        fontFamily: "inherit",
-        fontWeight: "normal",
-        lineHeight: "tall",
-        color: "inherit",
+        // fontFamily: "inherit",
+        // fontWeight: "normal",
+        // lineHeight: "tall",
+        // color: "inherit",
       },
     },
-    Button: {
-      baseStyle: {
-        textTransform: "uppercase",
-        letterSpacing: "widest",
-        fontWeight: "normal",
-        userSelect: "none",
-        colorScheme: "gray.100",
-      },
-    },
+    // Button: {
+    //   baseStyle: {
+    //     textTransform: "uppercase",
+    //     letterSpacing: "widest",
+    //     fontWeight: "normal",
+    //     userSelect: "none",
+    //     colorScheme: "gray.900",
+    //   },
+    // },
   },
 };
 

@@ -1,7 +1,5 @@
 //TODO: Properly handle user tabbing
-
 import React, {
-  useLayoutEffect,
   useCallback,
   useEffect,
   useState,

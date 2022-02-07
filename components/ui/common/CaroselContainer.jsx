@@ -24,19 +24,22 @@ const CaroselContainer = () => {
 
   return (
     <Container
-      py={8}
-      px={0}
-      maxW={{
-        base: "100%",
-        sm: "35rem",
-        md: "43.75rem",
-        lg: "57.5rem",
-        xl: "75rem",
-        xxl: "87.5rem",
-      }}
+      // py={8}
+      // px={0}
+      // maxW={{
+      //   base: "100%",
+      //   sm: "35rem",
+      //   md: "43.75rem",
+      //   lg: "57.5rem",
+      //   xl: "75rem",
+      //   xxl: "87.5rem",
+      // }}
+      p={2}
+      maxW="60%"
+      mx="auto"
     >
       <ChakraCarousel gap={32}>
-        {data.slice(5, 15).map((post, index) => (
+        {data?.map((post, index) => (
           <Flex
             key={index}
             boxShadow="rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
@@ -71,7 +74,7 @@ const CaroselContainer = () => {
                 </Tag>
               </HStack>
               <Button
-                onClick={() => alert(`Post ${post.id - 5} clicked`)}
+                onClick={() => alert(`Post ${post.id} clicked`)}
                 colorScheme="green"
                 fontWeight="bold"
                 color="gray.900"

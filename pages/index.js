@@ -1,10 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import { HorizontalC } from "../components/Horizontal-collapse";
-import CaroselContainer from "../components/CaroselContainer";
+import MediaCard from "../components/ui/cards/MediaCard";
+import CaroselContainer from "../components/ui/common/CaroselContainer";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="" style={{ backgroundColor: "black" }}>
       <Head>
@@ -14,6 +13,7 @@ export default function Home() {
       </Head>
       <HorizontalC />
       <CaroselContainer />
+      <MediaCard />
     </div>
   );
 }

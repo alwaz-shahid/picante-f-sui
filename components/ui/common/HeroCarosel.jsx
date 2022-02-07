@@ -22,8 +22,8 @@ import {
 import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 
-import useBoundingRect from "../hooks/useBoundingRect";
-import percentage from "../utils/percentage";
+import useBoundingRect from "../../../hooks/useBoundingRect";
+import percentage from "../../../utils/percentage";
 
 const MotionFlex = motion(Flex);
 
@@ -34,7 +34,7 @@ const transitionProps = {
   mass: 3,
 };
 
-const ChakraCarousel = ({ children, gap }) => {
+const HeroCarousel = ({ children, gap }) => {
   const [trackIsActive, setTrackIsActive] = useState(false);
   const [multiplier, setMultiplier] = useState(0.35);
   const [sliderWidth, setSliderWidth] = useState(0);
@@ -412,4 +412,4 @@ const Item = ({
   );
 };
 
-export default ChakraCarousel;
+export default HeroCarousel;

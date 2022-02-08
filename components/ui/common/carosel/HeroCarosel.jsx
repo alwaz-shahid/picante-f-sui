@@ -48,50 +48,41 @@ const Slider = ({
 
   const handleDecrementClick = () => {
     setTrackIsActive(true);
+    // alert(activeItem);
+    // alert(positions.length);
+    if (activeItem == 0) {
+      setActiveItem(positions.length - 1);
+    }
+
     !(activeItem === positions.length - positions.length) &&
       setActiveItem((prev) => prev - 1);
   };
 
   const handleIncrementClick = () => {
     setTrackIsActive(true);
+    // alert(activeItem);
+    // alert(positions.length);
+    if (activeItem + 1 == positions.length) {
+      setActiveItem(0);
+    }
     !(activeItem === positions.length - constraint) &&
       setActiveItem((prev) => prev + 1);
   };
 
   return (
-    <>
-      <Box
-        ref={ref}
-        w={{ base: "100%", md: `calc(100% + ${gap}px)` }}
-        ml={{ base: 0, md: `-${gap / 2}px` }}
-        px={`${gap / 2}px`}
-        position="relative"
-        overflow="hidden"
-        _before={{
-          bgGradient: "linear(to-r, base.d400, transparent)",
-          position: "absolute",
-          w: `${gap / 2}px`,
-          content: "''",
-          zIndex: 1,
-          h: "100%",
-          left: 0,
-          top: 0,
-        }}
-        _after={{
-          bgGradient: "linear(to-l, base.d400, transparent)",
-          position: "absolute",
-          w: `${gap / 2}px`,
-          content: "''",
-          zIndex: 1,
-          h: "100%",
-          right: 0,
-          top: 0,
-        }}
-      >
+    <section className="max-h-[500px] relative">
+      <div className="relative overflow-hidden" ref={ref}>
         {children}
-      </Box>
+      </div>
 
-      <Flex w={`${itemWidth}px`} mt={`${gap / 2}px`} mx="auto">
+      <div
+        className={`w-[${itemWidth}px] mt-[${
+          gap / 2
+        }px] flex justify-between items-center absCenter min-w-full`}
+        w={`${itemWidth}px`}
+        mt={`${gap / 2}px`}
+        // mx="auto"
+      >
         <Button
           onClick={handleDecrementClick}
           onFocus={handleFocus}
@@ -102,21 +93,6 @@ const Slider = ({
         >
           <ChevronLeftIcon boxSize={9} />
         </Button>
-
-        <Progress
-          value={percentage(activeItem, positions.length - constraint)}
-          alignSelf="center"
-          borderRadius="2px"
-          bg="base.d100"
-          flex={1}
-          h="3px"
-          sx={{
-            "> div": {
-              backgroundColor: "gray.400",
-            },
-          }}
-        />
-
         <Button
           onClick={handleIncrementClick}
           onFocus={handleFocus}
@@ -125,11 +101,12 @@ const Slider = ({
           variant="link"
           zIndex={2}
           minW={0}
+          minH={"100%"}
         >
           <ChevronRightIcon boxSize={9} />
         </Button>
-      </Flex>
-    </>
+      </div>
+    </section>
   );
 };
 
@@ -323,17 +300,17 @@ const HeroCarosel = ({ children, gap }) => {
     () => children.map((_, index) => -Math.abs((itemWidth + gap) * index)),
     [children, itemWidth, gap]
   );
-  const { breakpoints } = useTheme();
+  // const { breakpoints } = useTheme();
 
-  const [isBetweenBaseAndMd] = useMediaQuery(
-    `(min-width: ${breakpoints.base}) and (max-width: ${breakpoints.md})`
-  );
+  // const [isBetweenBaseAndMd] = useMediaQuery(
+  //   `(min-width: ${breakpoints.base}) and (max-width: ${breakpoints.md})`
+  // );
 
-  const [isBetweenMdAndXl] = useMediaQuery(
-    `(min-width: ${breakpoints.md}) and (max-width: ${breakpoints.xl})`
-  );
+  // const [isBetweenMdAndXl] = useMediaQuery(
+  //   `(min-width: ${breakpoints.md}) and (max-width: ${breakpoints.xl})`
+  // );
 
-  const [isGreaterThanXL] = useMediaQuery(`(min-width: ${breakpoints.xl})`);
+  // const [isGreaterThanXL] = useMediaQuery(`(min-width: ${breakpoints.xl})`);
 
   useEffect(() => {
     setItemWidth(sliderWidth - gap);

@@ -12,7 +12,7 @@ const CaroselContainer = () => {
 
   return (
     <div className="-my-2">
-      <Carosel gap={10}>
+      <Carosel gap={1}>
         {data?.map(({ title, src }, index) => (
           <div className="relative min-h-full min-w-full" key={index}>
             <div className="min-h-[500px] min-w-full">

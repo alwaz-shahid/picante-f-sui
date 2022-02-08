@@ -1,4 +1,3 @@
-//TODO: Properly handle user tabbing
 import React, {
   useCallback,
   useEffect,
@@ -19,8 +18,8 @@ import {
 
 import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
-import useBoundingRect from "../../../hooks/useBoundingRect";
-import percentage from "../../../utils/percentage";
+import useBoundingRect from "../../../../hooks/useBoundingRect";
+import percentage from "../../../../utils/percentage";
 
 const MotionFlex = motion(Flex);
 
@@ -29,99 +28,6 @@ const transitionProps = {
   type: "spring",
   damping: 60,
   mass: 3,
-};
-
-const ChakraCarousel = ({ children, gap }) => {
-  const [trackIsActive, setTrackIsActive] = useState(false);
-  const [multiplier, setMultiplier] = useState(0.35);
-  const [sliderWidth, setSliderWidth] = useState(0);
-  const [activeItem, setActiveItem] = useState(0);
-  const [constraint, setConstraint] = useState(0);
-  const [itemWidth, setItemWidth] = useState(0);
-
-  const initSliderWidth = useCallback((width) => setSliderWidth(width), []);
-
-  const positions = useMemo(
-    () => children.map((_, index) => -Math.abs((itemWidth + gap) * index)),
-    [children, itemWidth, gap]
-  );
-
-  const { breakpoints } = useTheme();
-
-  const [isBetweenBaseAndMd] = useMediaQuery(
-    `(min-width: ${breakpoints.base}) and (max-width: ${breakpoints.md})`
-  );
-
-  const [isBetweenMdAndXl] = useMediaQuery(
-    `(min-width: ${breakpoints.md}) and (max-width: ${breakpoints.xl})`
-  );
-
-  const [isGreaterThanXL] = useMediaQuery(`(min-width: ${breakpoints.xl})`);
-
-  useEffect(() => {
-    if (isBetweenBaseAndMd) {
-      setItemWidth(sliderWidth - gap);
-      setMultiplier(0.65);
-      setConstraint(1);
-    }
-    if (isBetweenMdAndXl) {
-      setItemWidth(sliderWidth / 2 - gap);
-      setMultiplier(0.5);
-      setConstraint(2);
-    }
-    if (isGreaterThanXL) {
-      setItemWidth(sliderWidth / 3 - gap);
-      setMultiplier(0.35);
-      setConstraint(3);
-    }
-  }, [isBetweenBaseAndMd, isBetweenMdAndXl, isGreaterThanXL, sliderWidth, gap]);
-
-  const sliderProps = {
-    setTrackIsActive,
-    initSliderWidth,
-    setActiveItem,
-    activeItem,
-    constraint,
-    itemWidth,
-    positions,
-    gap,
-  };
-
-  const trackProps = {
-    setTrackIsActive,
-    trackIsActive,
-    setActiveItem,
-    sliderWidth,
-    activeItem,
-    constraint,
-    multiplier,
-    itemWidth,
-    positions,
-    gap,
-  };
-
-  const itemProps = {
-    setTrackIsActive,
-    trackIsActive,
-    setActiveItem,
-    activeItem,
-    constraint,
-    itemWidth,
-    positions,
-    gap,
-  };
-
-  return (
-    <Slider {...sliderProps}>
-      <Track {...trackProps}>
-        {children.map((child, index) => (
-          <Item {...itemProps} index={index} key={index}>
-            {child}
-          </Item>
-        ))}
-      </Track>
-    </Slider>
-  );
 };
 
 const Slider = ({
@@ -136,12 +42,6 @@ const Slider = ({
   gap,
 }) => {
   const [ref, { width }] = useBoundingRect();
-  //   if (typeof window !== "undefined") {
-  //     useLayoutEffect(
-  //       () => initSliderWidth(Math.round(width)),
-  //       [width, initSliderWidth]
-  //     );
-  //   }
 
   useEffect(() => initSliderWidth(Math.round(width)), [width, initSliderWidth]);
   const handleFocus = () => setTrackIsActive(true);
@@ -252,7 +152,7 @@ const Track = ({
   const handleDragStart = () => setDragStartPosition(positions[activeItem]);
 
   const handleDragEnd = (_, info) => {
-    console.log(info);
+    // console.log(info);
     const distance = info.offset.x;
     const velocity = info.velocity.x * multiplier;
     const direction = velocity < 0 || distance < 0 ? 1 : -1;
@@ -409,4 +309,84 @@ const Item = ({
   );
 };
 
-export default ChakraCarousel;
+const HeroCarosel = ({ children, gap }) => {
+  const [trackIsActive, setTrackIsActive] = useState(false);
+  const [multiplier, setMultiplier] = useState(0);
+  const [sliderWidth, setSliderWidth] = useState(0);
+  const [activeItem, setActiveItem] = useState(0);
+  const [constraint, setConstraint] = useState(0);
+  const [itemWidth, setItemWidth] = useState(sliderWidth - gap);
+
+  const initSliderWidth = useCallback((width) => setSliderWidth(width), []);
+
+  const positions = useMemo(
+    () => children.map((_, index) => -Math.abs((itemWidth + gap) * index)),
+    [children, itemWidth, gap]
+  );
+  const { breakpoints } = useTheme();
+
+  const [isBetweenBaseAndMd] = useMediaQuery(
+    `(min-width: ${breakpoints.base}) and (max-width: ${breakpoints.md})`
+  );
+
+  const [isBetweenMdAndXl] = useMediaQuery(
+    `(min-width: ${breakpoints.md}) and (max-width: ${breakpoints.xl})`
+  );
+
+  const [isGreaterThanXL] = useMediaQuery(`(min-width: ${breakpoints.xl})`);
+
+  useEffect(() => {
+    setItemWidth(sliderWidth - gap);
+    setMultiplier(0.65);
+    setConstraint(1);
+  }, [sliderWidth, gap]);
+
+  const sliderProps = {
+    setTrackIsActive,
+    initSliderWidth,
+    setActiveItem,
+    activeItem,
+    constraint,
+    itemWidth,
+    positions,
+    gap,
+  };
+
+  const trackProps = {
+    setTrackIsActive,
+    trackIsActive,
+    setActiveItem,
+    sliderWidth,
+    activeItem,
+    constraint,
+    multiplier,
+    itemWidth,
+    positions,
+    gap,
+  };
+
+  const itemProps = {
+    setTrackIsActive,
+    trackIsActive,
+    setActiveItem,
+    activeItem,
+    constraint,
+    itemWidth,
+    positions,
+    gap,
+  };
+
+  return (
+    <Slider {...sliderProps}>
+      <Track {...trackProps}>
+        {children.map((child, index) => (
+          <Item {...itemProps} index={index} key={index}>
+            {child}
+          </Item>
+        ))}
+      </Track>
+    </Slider>
+  );
+};
+
+export default HeroCarosel;

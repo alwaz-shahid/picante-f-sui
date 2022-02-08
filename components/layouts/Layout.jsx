@@ -1,27 +1,20 @@
 import { Container, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import Footer from "../sections/footer/Footer";
-import CaroselContainer from "../ui/common/CaroselContainer";
-import HeroCarousel from "../ui/common/HeroCarosel";
+import CaroselContainer from "../ui/common/carosel/CaroselContainer";
+import HeroCarousel from "../ui/common/carosel/HeroCarosel";
 import Navbar from "../ui/top-bar/Navbar";
 
 const Layout = ({ children }) => {
   return (
-    <SimpleGrid
-      column={1}
-      mx="auto"
-      //   minW="100%"
-      maxW="1800px"
-      minH="100vh"
-      overflow={"hidden"}
-      as="section"
-    >
+    <section className="layout">
+      <div className="block"></div>
       <Navbar />
       {/* <CaroselContainer /> */}
-      <HeroCarousel />
+      {/* <HeroCarousel /> */}
       {children}
       <Footer />
-    </SimpleGrid>
+    </section>
   );
 };
 

@@ -6,9 +6,11 @@ import Layout from "./../components/layouts/Layout";
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <section className="max-w-8xl mx-auto min-h-screen overflow-hidden">
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </section>
       <CSSReset />
     </ChakraProvider>
   );

@@ -7,14 +7,14 @@ import Navbar from "../ui/top-bar/Navbar";
 
 const Layout = ({ children }) => {
   return (
-    <section className="layout">
-      <div className="block"></div>
+    <>
       <Navbar />
+      <div className="block"></div>
       {/* <CaroselContainer /> */}
       {/* <HeroCarousel /> */}
       {children}
       <Footer />
-    </section>
+    </>
   );
 };
 

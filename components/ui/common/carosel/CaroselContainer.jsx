@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  Container,
-  Heading,
-  Button,
-  VStack,
-  HStack,
-  Box,
-  Text,
-  Flex,
-  Tag,
-  Stack,
-} from "@chakra-ui/react";
-import { capsFirst } from "../../../../utils";
-import ChakraCarousel from "./ChakraCarosel";
+import { Container } from "@chakra-ui/react";
+
 import Carosel from "./HeroCarosel";
 import Image from "next/image";
 
@@ -36,37 +24,25 @@ const CaroselContainer = () => {
     >
       <Carosel gap={10}>
         {data?.map(({ title, src }, index) => (
-          <Box
-            key={index}
-            height={"400px"}
-            position="relative"
-            backgroundPosition="center"
-            // backgroundRepeat="no-repeat"
-            // backgroundSize="cover"
-            // backgroundImage={`url(${post.image})`}
-            minW="100%"
-            bg={"gray.50"}
-          >
-            {/* This is the block you need to change, to customize the caption */}
-            <Flex
-              align={"center"}
-              justify={"center"}
-              minW={"100%"}
-              minH="100%"
-              position="relative"
-            >
+          <div className="relative min-h-full min-w-full" key={index}>
+            <div className="min-h-[500px] min-w-full">
               <Image
                 src={src}
                 alt="me"
-                width="3000px"
-                height="1000px"
-                style={{ minHeight: "100%" }}
+                // width="300px"
+                // height="100px"
+                layout="fill"
+                // objectFit="contain"
+                // width="10000px"
+                // height="500px"
+                // layout="fixed"
+                objectFit="cover"
               />
-              {/* <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+            </div>
+            {/* <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
                 {title}
               </Heading> */}
-            </Flex>
-          </Box>
+          </div>
         ))}
       </Carosel>
     </Container>

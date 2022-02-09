@@ -60,8 +60,6 @@ const Slider = ({
 
   const handleIncrementClick = () => {
     setTrackIsActive(true);
-    // alert(activeItem);
-    // alert(positions.length);
     if (activeItem + 1 == positions.length) {
       setActiveItem(0);
     }
@@ -81,11 +79,10 @@ const Slider = ({
         }px] flex justify-between items-center absCenter min-w-full`}
         w={`${itemWidth}px`}
         mt={`${gap / 2}px`}
-        // mx="auto"
       >
         <Button
           onClick={handleDecrementClick}
-          onFocus={handleFocus}
+          // onFocus={handleFocus}
           mr={`${gap / 3}px`}
           color="gray.200"
           variant="link"
@@ -95,7 +92,7 @@ const Slider = ({
         </Button>
         <Button
           onClick={handleIncrementClick}
-          onFocus={handleFocus}
+          // onFocus={handleFocus}
           ml={`${gap / 3}px`}
           color="gray.200"
           variant="link"

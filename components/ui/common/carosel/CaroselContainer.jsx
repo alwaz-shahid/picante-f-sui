@@ -9,7 +9,7 @@ const CaroselContainer = () => {
     { src: "/assets/static/samples/sampleB3.jpg", title: "vhmvhv" },
     { src: "/assets/static/samples/sampleB4.jpg", title: "vhmvhv" },
   ];
-
+  useEffect(() => {}, []);
   return (
     <div className="-my-2">
       <Carosel gap={1}>
@@ -25,4 +25,4 @@ const CaroselContainer = () => {
   );
 };
 
-export default CaroselContainer;
+export default React.memo(CaroselContainer);

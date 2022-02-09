@@ -16,25 +16,13 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
-
-const Links = ["Dashboard", "Projects", "Team"];
-
-const NavLink = ({ children }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {children}
-  </Link>
-);
+import NavLink from "./NavLink";
+import LeftMenu from "./LeftMenu";
+import AvatarMenu, { CartBtn } from "./AvatarMenu";
 
 export default function Navbar() {
+  const links = ["Dashboard", "Orders", "Deals", "Discounts", "Favoutites"];
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -48,55 +36,19 @@ export default function Navbar() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={"center"}>
-            <Box>Logo</Box>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-            >
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
-            </HStack>
-          </HStack>
+          <LeftMenu links={links} />
+
+          {/* left menu */}
           <Flex alignItems={"center"}>
-            <Button
-              variant="outline"
-              // colorScheme={"teal"}
-              size={"sm"}
-              mr={4}
-              leftIcon={<AddIcon />}
-            >
-              Cart
-            </Button>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}
-              >
-                <Avatar
-                  size={"sm"}
-                  src={"https://www.w3schools.com/w3images/avatar6.png"}
-                />
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
-              </MenuList>
-            </Menu>
+            <CartBtn />
+            <AvatarMenu />
           </Flex>
         </Flex>
 
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
+              {links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
             </Stack>

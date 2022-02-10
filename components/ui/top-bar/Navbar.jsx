@@ -58,7 +58,7 @@ export default function Navbar() {
 
   return (
     <header className="relative top-0 left-0">
-      <Box bg={useColorModeValue("gray.400", "gray.900")} px={4}>
+      <Box bg={useColorModeValue("red.400", "red.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <div className="flex space-x-3">
             <DrawerUI

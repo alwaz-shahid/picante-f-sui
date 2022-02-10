@@ -46,7 +46,9 @@ const SubMenu = () => {
       <Spacer />
       <HStack spacing={3} alignItems="center">
         <InputGroup display={{ base: "none", lg: "block" }} ml="auto">
-          <InputLeftElement pointerEvents="none" children={<SearchIcon />} />
+          <InputLeftElement pointerEvents="none">
+            <SearchIcon />
+          </InputLeftElement>
           <Input type="tel" placeholder="Search..." />
         </InputGroup>
       </HStack>

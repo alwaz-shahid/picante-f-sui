@@ -9,34 +9,35 @@ import {
   DrawerOverlay,
 } from "@chakra-ui/react";
 
-function Drawer({
+function DrawerUI({
   children,
-  open,
   onClose,
   isOpen,
   onOpen,
-  headerTitle,
+  headerTitle = "headerTitle",
+  btn,
   position = "right",
   ...props
 }) {
   //   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
-      <Button onClick={onOpen}>Open Drawer</Button>
-      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+    <div className="">
+      {btn && btn}
+      {!btn && (
+        <Button onClick={onOpen} {...props}>
+          Open
+        </Button>
+      )}
+      <Drawer placement={position} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">{headerTitle}</DrawerHeader>
-          <DrawerBody>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-          </DrawerBody>
+          <DrawerBody>{children}</DrawerBody>
         </DrawerContent>
       </Drawer>
-    </>
+    </div>
   );
 }
 
-export default Drawer;
+export default DrawerUI;

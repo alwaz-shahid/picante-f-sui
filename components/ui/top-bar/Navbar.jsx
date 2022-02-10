@@ -19,41 +19,67 @@ import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import NavLink from "./NavLink";
 import LeftMenu from "./LeftMenu";
 import AvatarMenu, { CartBtn } from "./AvatarMenu";
+import LinkBtn from "../common/LinkBtn";
+import DrawerUI from "../common/DrawerUI";
 
 export default function Navbar() {
-  const links = ["Dashboard", "Orders", "Deals", "Discounts", "Favoutites"];
+  const links = [
+    { title: "Dashboard", href: "/" },
+    { title: "Products", href: "/products" },
+    { title: "Orders", href: "/orders" },
+    { title: "Customers", href: "/customers" },
+    { title: "Reports", href: "/reports" },
+  ];
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: menuIsOpen,
+    onOpen: menuOnOpen,
+    onClose: menuOnClose,
+  } = useDisclosure();
+  const {
+    isOpen: cartIsOpen,
+    onOpen: cartOnOpen,
+    onClose: cartOnClose,
+  } = useDisclosure();
+
+  const menuBtn = () => {
+    return (
+      <IconButton
+        size={"md"}
+        icon={menuIsOpen ? <CloseIcon /> : <HamburgerIcon />}
+        aria-label={"Open Menu"}
+        display={{ md: "none" }}
+        onClick={menuOnOpen}
+      />
+    );
+  };
 
   return (
     <header className="relative top-0 left-0">
       <Box bg={useColorModeValue("gray.400", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
-          <LeftMenu links={links} />
-
+          <div className="flex space-x-3">
+            <DrawerUI
+              btn={menuBtn()}
+              onClose={menuOnClose}
+              isOpen={menuIsOpen}
+              onOpen={menuOnOpen}
+              position="left"
+            >
+              <div className="flex flex-col space-y-3 p-4 ">
+                {links.map(({ title, href }, i) => (
+                  <LinkBtn key={i}>{title}</LinkBtn>
+                ))}
+              </div>
+            </DrawerUI>
+            <LeftMenu links={links} />
+          </div>
           {/* left menu */}
           <Flex alignItems={"center"}>
             <CartBtn />
             <AvatarMenu />
           </Flex>
         </Flex>
-
-        {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              {links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
-            </Stack>
-          </Box>
-        ) : null}
       </Box>
     </header>
   );

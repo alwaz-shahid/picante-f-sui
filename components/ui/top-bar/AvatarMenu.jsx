@@ -5,10 +5,13 @@ import {
   Menu,
   MenuButton,
   MenuDivider,
+  MenuGroup,
   MenuItem,
   MenuList,
+  Portal,
 } from "@chakra-ui/react";
 import React from "react";
+import NextLink from "../common/NextLink";
 
 const AvatarMenu = (links = []) => {
   return (
@@ -25,11 +28,29 @@ const AvatarMenu = (links = []) => {
           src={"https://www.w3schools.com/w3images/avatar6.png"}
         />
       </MenuButton>
+
       <MenuList>
         <MenuItem>Link 1</MenuItem>
         <MenuItem>Link 2</MenuItem>
         <MenuDivider />
-        <MenuItem>Link 3</MenuItem>
+        <MenuGroup title="Profile">
+          <MenuItem>My Account</MenuItem>
+          <MenuItem>Payments </MenuItem>
+        </MenuGroup>
+        <MenuDivider />
+        <MenuDivider />
+        <MenuGroup title="Account">
+          <MenuItem w={"100%"}>
+            <NextLink minW="100%" href="/user/login">
+              Log In
+            </NextLink>
+          </MenuItem>
+          <MenuItem>
+            <NextLink minW="100%" href="/user/register">
+              Register
+            </NextLink>
+          </MenuItem>
+        </MenuGroup>
       </MenuList>
     </Menu>
   );
@@ -39,7 +60,7 @@ export default AvatarMenu;
 
 export const CartBtn = () => {
   return (
-    <>
+    <div className="mr-2">
       <Button
         variant="outline"
         // colorScheme={"teal"}
@@ -49,6 +70,6 @@ export const CartBtn = () => {
       >
         Cart
       </Button>
-    </>
+    </div>
   );
 };

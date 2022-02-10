@@ -1,7 +1,12 @@
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { IconButton, useDisclosure } from "@chakra-ui/react";
 import Head from "next/head";
 import CaroselContainer from "../components/ui/common/carosel/CaroselContainer";
+import DrawerUI from "../components/ui/common/DrawerUI";
 
 export default function HomePage() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <div className="">
       <Head>

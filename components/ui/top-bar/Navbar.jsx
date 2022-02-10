@@ -21,6 +21,7 @@ import AvatarMenu, { CartBtn } from "./AvatarMenu";
 
 import LinkBtn from "./../common/links/LinkBtn";
 import DrawerUI from "../common/drawer/DrawerUI";
+import SubMenu from "./SubMenu";
 
 export default function Navbar() {
   const links = [
@@ -81,6 +82,7 @@ export default function Navbar() {
             <AvatarMenu />
           </Flex>
         </Flex>
+        <SubMenu />
       </Box>
     </header>
   );

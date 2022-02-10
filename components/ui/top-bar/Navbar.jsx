@@ -16,14 +16,15 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
-import NavLink from "./NavLink";
 import LeftMenu from "./LeftMenu";
 import AvatarMenu, { CartBtn } from "./AvatarMenu";
-import LinkBtn from "../common/LinkBtn";
-import DrawerUI from "../common/DrawerUI";
+
+import LinkBtn from "./../common/links/LinkBtn";
+import DrawerUI from "../common/drawer/DrawerUI";
 
 export default function Navbar() {
   const links = [
+    { title: "Home", href: "/" },
     { title: "Dashboard", href: "/" },
     { title: "Products", href: "/products" },
     { title: "Orders", href: "/orders" },

@@ -5,7 +5,9 @@ import React from "react";
 const NextLink = ({ href = "/", children, to, ...props }) => {
   return (
     <Link className="min-w-full" passHref href={href}>
-      <ChakraLink {...props}>{children}</ChakraLink>
+      <ChakraLink fontWeight={"semibold"} {...props}>
+        {children}
+      </ChakraLink>
     </Link>
   );
 };

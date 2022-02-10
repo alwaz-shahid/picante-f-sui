@@ -11,7 +11,7 @@ import {
   Portal,
 } from "@chakra-ui/react";
 import React from "react";
-import NextLink from "../common/NextLink";
+import NextLink from "../common/links/NextLink";
 
 const AvatarMenu = (links = []) => {
   return (

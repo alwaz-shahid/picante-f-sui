@@ -66,7 +66,10 @@ const Slider = ({
     !(activeItem === positions.length - constraint) &&
       setActiveItem((prev) => prev + 1);
   };
-
+  const dynamicStyle = {
+    minWidth: `${itemWidth}px`,
+    marginTop: `${gap / 2}px`,
+  };
   return (
     <section className="max-h-[500px] relative">
       <div className="relative overflow-hidden" ref={ref}>
@@ -74,11 +77,10 @@ const Slider = ({
       </div>
 
       <div
-        className={`w-[${itemWidth}px] mt-[${
-          gap / 2
-        }px] flex justify-between items-center absCenter min-w-full`}
-        w={`${itemWidth}px`}
-        mt={`${gap / 2}px`}
+        className={` flex justify-between items-center absCenter min-w-full`}
+        // w={`${itemWidth}px`}
+        // mt={`${gap / 2}px`}
+        style={dynamicStyle}
       >
         <Button
           onClick={handleDecrementClick}

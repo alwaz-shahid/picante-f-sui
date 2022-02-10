@@ -1,7 +1,9 @@
 import "../styles/globals.css";
-import { ChakraProvider, theme, CSSReset, Box } from "@chakra-ui/react";
+import { ChakraProvider, ScaleFade } from "@chakra-ui/react";
 import HookForm from "../hook-form/HookForm";
 import Layout from "./../components/layouts/Layout";
+import theme from "../theme";
+import Navbar from "../components/ui/top-bar/Navbar";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -11,7 +13,6 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Layout>
       </section>
-      <CSSReset />
     </ChakraProvider>
   );
 }

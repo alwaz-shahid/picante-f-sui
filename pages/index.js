@@ -1,12 +1,18 @@
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { IconButton, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  IconButton,
+  useColorMode,
+  useDisclosure,
+} from "@chakra-ui/react";
 import Head from "next/head";
 import Home from "../components/layouts/home/Home";
 import CaroselContainer from "../components/ui/common/carosel/CaroselContainer";
 
 export default function HomePage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <section className="">
       <Head>
@@ -15,7 +21,43 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="min-h-screen w-full bg-gray-100">
-        <Home></Home>
+        <Home>
+          <Button
+            m={"10"}
+            w={"200px"}
+            variant="primary"
+            onClick={toggleColorMode}
+          >
+            Toggle {colorMode === "light" ? "Dark" : "Light"}
+          </Button>
+          <Button w={"200px"} variant="solid">
+            C
+          </Button>
+          <div className="bg-black">
+            <Box
+              height={{
+                base: "100%", // 0-48em
+                md: "50%", // 48em-80em,
+                xl: "25%", // 80em+
+              }}
+              bg="teal.400"
+              width={[
+                "100%", // 0-30em
+                "50%", // 30em-48em
+                "25%", // 48em-62em
+                "15%", // 62em+
+              ]}
+            />
+            {/* responsive font size */}
+            <Box fontSize={["sm", "md", "lg", "xl"]}>Font Size</Box>
+            {/* responsive margin */}
+            <Box mt={[2, 4, 6, 8]} width="full" height="24px" bg="tomato" />
+            {/* responsive padding */}
+            <Box bg="papayawhip" p={[2, 4, 6, 8]}>
+              Padding
+            </Box>
+          </div>
+        </Home>
       </main>
     </section>
   );

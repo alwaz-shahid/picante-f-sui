@@ -10,8 +10,7 @@ const Layout = ({ children }) => {
     <>
       <Navbar />
       <div className="block"></div>
-      {/* <CaroselContainer /> */}
-      {/* <HeroCarousel /> */}
+
       {children}
       <Footer />
     </>

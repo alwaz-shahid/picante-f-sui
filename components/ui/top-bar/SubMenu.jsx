@@ -21,8 +21,48 @@ const SubMenu = () => {
       borderWidth={0}
       overflowX="auto"
     >
-      <Tabs defaultIndex={1} borderBottomColor="transparent">
-        <TabList>
+      <Tabs
+        defaultIndex={1}
+        borderBottomColor="transparent"
+        css={{
+          "&::-webkit-scrollbar": {
+            //   width: '4px',
+            display: "none",
+            scrollbarWidth: "none",
+          },
+          "&::-webkit-scrollbar-track": {
+            //   width: '6px',
+            display: "none",
+            scrollbarWidth: "none",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            //   background: scrollbarColor,
+            display: "none",
+            scrollbarWidth: "none",
+            //   borderRadius: '24px',
+          },
+        }}
+      >
+        <TabList
+          css={{
+            "&::-webkit-scrollbar": {
+              //   width: '4px',
+              display: "none",
+              scrollbarWidth: "none",
+            },
+            "&::-webkit-scrollbar-track": {
+              //   width: '6px',
+              display: "none",
+              scrollbarWidth: "none",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              //   background: scrollbarColor,
+              display: "none",
+              scrollbarWidth: "none",
+              //   borderRadius: '24px',
+            },
+          }}
+        >
           <Tab py={4} m={0} _focus={{ boxShadow: "none" }}>
             Basic
           </Tab>
@@ -46,7 +86,7 @@ const SubMenu = () => {
       <Spacer />
       <HStack spacing={3} alignItems="center">
         <InputGroup display={{ base: "none", lg: "block" }} ml="auto">
-          <InputLeftElement pointerEvents="none">
+          <InputLeftElement zIndex={"1"} pointerEvents="none">
             <SearchIcon />
           </InputLeftElement>
           <Input type="tel" placeholder="Search..." />

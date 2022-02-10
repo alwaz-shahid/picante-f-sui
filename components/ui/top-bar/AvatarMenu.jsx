@@ -15,7 +15,7 @@ import NextLink from "../common/links/NextLink";
 
 const AvatarMenu = (links = []) => {
   return (
-    <Menu>
+    <Menu colorScheme={"primary"} isLazy>
       <MenuButton
         as={Button}
         rounded={"full"}
@@ -29,7 +29,7 @@ const AvatarMenu = (links = []) => {
         />
       </MenuButton>
 
-      <MenuList>
+      <MenuList zIndex={"50"}>
         <MenuItem>Link 1</MenuItem>
         <MenuItem>Link 2</MenuItem>
         <MenuDivider />

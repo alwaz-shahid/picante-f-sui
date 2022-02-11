@@ -11,6 +11,7 @@ import {
   Portal,
 } from "@chakra-ui/react";
 import React from "react";
+import ChangeTheme from "../common/ChangeTheme";
 import NextLink from "../common/links/NextLink";
 
 const AvatarMenu = (links = []) => {
@@ -38,7 +39,6 @@ const AvatarMenu = (links = []) => {
           <MenuItem>Payments </MenuItem>
         </MenuGroup>
         <MenuDivider />
-        <MenuDivider />
         <MenuGroup title="Account">
           <MenuItem w={"100%"}>
             <NextLink minW="100%" href="/user/login">
@@ -49,6 +49,12 @@ const AvatarMenu = (links = []) => {
             <NextLink minW="100%" href="/user/register">
               Register
             </NextLink>
+          </MenuItem>
+        </MenuGroup>
+        <MenuDivider />
+        <MenuGroup title="App">
+          <MenuItem>
+            <ChangeTheme />
           </MenuItem>
         </MenuGroup>
       </MenuList>

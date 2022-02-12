@@ -15,6 +15,8 @@ import React from "react";
 const SubMenu = () => {
   return (
     <Flex
+      color={"text"}
+      bg="text"
       alignItems="center"
       justifyContent="space-between"
       mx={2}
@@ -22,26 +24,10 @@ const SubMenu = () => {
       overflowX="auto"
     >
       <Tabs
+        color={""}
+        variant="enclosed"
         defaultIndex={1}
         borderBottomColor="transparent"
-        css={{
-          "&::-webkit-scrollbar": {
-            //   width: '4px',
-            display: "none",
-            scrollbarWidth: "none",
-          },
-          "&::-webkit-scrollbar-track": {
-            //   width: '6px',
-            display: "none",
-            scrollbarWidth: "none",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            //   background: scrollbarColor,
-            display: "none",
-            scrollbarWidth: "none",
-            //   borderRadius: '24px',
-          },
-        }}
       >
         <TabList
           css={{

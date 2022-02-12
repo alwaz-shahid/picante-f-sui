@@ -82,7 +82,7 @@ export default function Navbar() {
             <AvatarMenu />
           </Flex>
         </Flex>
-        <SubMenu />
+        {/* <SubMenu /> */}
       </Box>
     </header>
   );

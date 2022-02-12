@@ -11,7 +11,7 @@ const CaroselContainer = () => {
   ];
   useEffect(() => {}, []);
   return (
-    <div className="-mt-[5px]">
+    <div className="-mt-[5px] ">
       <Carosel gap={0}>
         {data?.map(({ title, src }, index) => (
           <div className="relative min-h-full min-w-full" key={index}>

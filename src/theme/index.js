@@ -24,19 +24,21 @@ const breakpoints = createBreakpoints({
 const customTheme = {
   semanticTokens: {
     colors: {
-      error: "red.500",
+      error: "red.400",
       success: "green.500",
       primary: {
-        default: "red.500",
-        _dark: "orange.400",
+        default: "red.600",
+        // _dark: "orange.400",
+        _dark: "#ff934a",
       },
       secondary: {
-        default: "red.800",
+        default: "green.800",
         _dark: "orange.700",
+        // _dark: "#ff934a",
       },
       text: {
-        default: "green.900",
-        _dark: "green.50",
+        default: "blue.900",
+        _dark: "blue.50",
       },
     },
   },

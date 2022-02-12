@@ -18,8 +18,9 @@ import {
 
 import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
+// import useBoundingRect from "../../../../hooks/useBoundingRect";
+// import percentage from "../../../../utils/percentage";
 import useBoundingRect from "../../../../hooks/useBoundingRect";
-import percentage from "../../../../utils/percentage";
 
 const MotionFlex = motion(Flex);
 
